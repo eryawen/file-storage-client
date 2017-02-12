@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="500.0" minWidth="900.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.controller.MainController">
+    <children>
+        <SplitPane dividerPositions="0.8017817371937639" layoutX="172.0" layoutY="47.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <SplitPane dividerPositions="0.04040404040404041" layoutX="113.0" layoutY="62.0" orientation="VERTICAL" prefHeight="498.0" prefWidth="717.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <items>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                    <children>
+                                        <SplitPane dividerPositions="0.5021037868162693" layoutX="109.0" layoutY="42.0" prefHeight="231.0" prefWidth="418.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <items>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                    <children>
+                                                        <TreeView fx:id="localFileSystemTreeView" layoutX="2.0" layoutY="15.0" prefHeight="308.0" prefWidth="273.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <contextMenu>
+                                                                <ContextMenu fx:id="possibleOperations">
+                                                                    <items>
+                                                                        <MenuItem mnemonicParsing="false" onAction="#changeLocalPathToSelectedInTreeView" text="Set as current path" />
+                                                                    </items>
+                                                                </ContextMenu>
+                                                            </contextMenu>
+                                                        </TreeView>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                    <children>
+                                                        <TreeView fx:id="remoteFileSystemTreeView" layoutX="4.0" layoutY="15.0" prefHeight="308.0" prefWidth="278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <contextMenu>
+                                                                <ContextMenu>
+                                                                    <items>
+                                                                        <MenuItem mnemonicParsing="false" onAction="#changeRemotePathToSelectedInTreeView" text="Set as current path" />
+                                                                        <MenuItem mnemonicParsing="false" onAction="#handleRename_fromMenu" text="Rename" />
+                                                                        <MenuItem mnemonicParsing="false" onAction="#handleMove_fromMenu" text="Move" />
+                                                                    </items>
+                                                                </ContextMenu>
+                                                            </contextMenu>
+                                                        </TreeView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </items>
+                                        </SplitPane>
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                        <TextArea fx:id="responseTextArea" layoutX="2.0" layoutY="378.0" prefHeight="120.0" prefWidth="675.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="378.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="370.0">
+                    <children>
+                        <Label layoutX="10.0" layoutY="6.0" prefHeight="25.0" prefWidth="200.0" text="You are logged in as ">
+                        </Label>
+                        <Label fx:id="usernameLabel" layoutX="125.0" layoutY="6.0" prefHeight="25.0" prefWidth="94.0" />
+                        <TextField fx:id="requestTextField" layoutX="19.0" layoutY="189.0" onMouseExited="#hidePossibleTextCommandsLabel" onMouseMoved="#showPossibleTextCommandsLabel" prefHeight="37.0" prefWidth="139.0" AnchorPane.bottomAnchor="272.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="189.0" />
+                        <Button fx:id="sendRequestButton" layoutX="19.0" layoutY="237.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="25.0" prefWidth="138.0" text="Send request" />
+                        <TextArea layoutX="-42.0" layoutY="-54.0" prefHeight="25.0" prefWidth="200.0" />
+                        <TextField fx:id="currentLocalFileTextField" layoutX="16.0" layoutY="51.0" prefHeight="37.0" prefWidth="150.0" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="51.0" />
+                        <TextField fx:id="currentRemoteFileTextField" layoutX="16.0" layoutY="96.0" prefHeight="37.0" prefWidth="150.0" />
+                        <Label fx:id="possibleOperationsLabel" layoutX="21.0" layoutY="142.0" opacity="0.56" prefHeight="37.0" prefWidth="172.0" text="mkdir, ls, get, put, rm, get_met" visible="false" />
+                        <Button layoutX="23.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="28.0" prefWidth="131.0" text="Logout" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
